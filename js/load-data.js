@@ -32,6 +32,9 @@
 
 	}).then(data => {  if (typeof populateFilters === 'function') populateFilters(data);
           if (typeof drawHistogram === 'function') drawHistogram(data);
+          if (typeof drawScatter === 'function') drawScatter(data);
+createTooltip();
+handleMouseEvent();
 		console.log('Data loaded successfully:', data);
 	}).catch(err => {
         console.error('Error loading or parsing data:', err);
