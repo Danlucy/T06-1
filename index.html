@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive D3 Chart</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/visualisations.css" />
+    <style>
+      /* tiny decoration to keep it minimal */
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>TV Energy — Interactive chart</h1>
+      <p style="margin:6px 0 0 0; color:#555;">Select filters below to explore energy consumption by TV type and size.</p>
+    </header>
+
+    <main>
+      <!-- div for filter buttons -->
+      <div id="filters_screen">
+        <div class="filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="LED">LED</button>
+          <button class="filter" data-filter="LCD">LCD</button>
+          <button class="filter" data-filter="OLED">OLED</button>
+        </div>
+      </div>
+
+      <!-- div for charts -->
+      <div id="histogram" class="responsive-svg-container"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Data Visualisation Week</p>
+    </footer>
+
+    <!-- scripts (order matters) -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/load-data.js"></script>
+    <script src="js/shared-constants.js"></script>
+    <script src="js/interactions.js"></script>
+    <script src="js/histogram.js"></script>
+    <script>
+      // Minimal wiring: load the CSV and call populateFilters + drawHistogram
+      if (typeof loadTVData === 'function') {
+        loadTVData().then(data => {
+          if (typeof populateFilters === 'function') populateFilters(data);
+          if (typeof drawHistogram === 'function') drawHistogram(data);
+        }).catch(err => console.error('loadTVData error:', err));
+      }
+    </script>
+  </body>
+</html>
