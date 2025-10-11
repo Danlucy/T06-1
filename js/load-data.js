@@ -30,9 +30,9 @@
 			star
 		};
 
-	}).then(data => {
+	}).then(data => {  if (typeof populateFilters === 'function') populateFilters(data);
+          if (typeof drawHistogram === 'function') drawHistogram(data);
 		console.log('Data loaded successfully:', data);
-        drawHistogram(data);
 	}).catch(err => {
         console.error('Error loading or parsing data:', err);
     });

@@ -37,8 +37,7 @@ const populateFilters = (data) => {
 
         const updatedData = filterId === 'all' ? data : data.filter(d => d.screenTech === filterId);
         const updatedBins = binGenerator(updatedData);
-      d3.select("#histogram")
-  .selectAll("rect")
+        d3.selectAll("#histogram rect")
   .data(updatedBins)
   .join("rect")
   .transition()

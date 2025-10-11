@@ -44,12 +44,7 @@
     <script src="js/histogram.js"></script>
     <script>
       // Minimal wiring: load the CSV and call populateFilters + drawHistogram
-      if (typeof loadTVData === 'function') {
-        loadTVData().then(data => {
-          if (typeof populateFilters === 'function') populateFilters(data);
-          if (typeof drawHistogram === 'function') drawHistogram(data);
-        }).catch(err => console.error('loadTVData error:', err));
-      }
+    
     </script>
   </body>
 </html>
