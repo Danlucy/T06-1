@@ -6,6 +6,11 @@
 	--accent-dark: #8b5a2b;
 	--text: #3f2f28;
 }
+/* quick visual test to confirm stylesheet is loaded via Live Server */
+body {
+  background: #f7f3e8 !important;
+}
+header h1 { color: #2b5d7a !important; }
   
 
 #filters_screen .filter{
